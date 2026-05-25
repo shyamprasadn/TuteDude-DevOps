@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "First list item",
+    "description": "First item to render from backend file as part of assignment"
+  },
+  {
+    "id": 2,
+    "name": "second list item",
+    "description": "This is the second item to render from backend file as part of assignment"
+  },
+  {
+    "id": 3,
+    "name": "third list item",
+    "description": "This is the third item to render from backend file as part of assignment"
+  },
+  {
+    "id": 4,
+    "name": "fourth list item",
+    "description": "This is the fourth item to render from backend file as part of assignment"
+  }
+]
