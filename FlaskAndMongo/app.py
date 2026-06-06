@@ -76,5 +76,28 @@ def get_api_data():
     except json.JSONDecodeError:
         return jsonify({"error": "Invalid JSON in data file"}), 500
 
+
+@app.route('/submittodoitem', methods=['POST'])
+def submittodoitem():
+    """Accept itemName and itemDescription via POST and store in MongoDB."""
+    try:
+
+        item_name = request.form.get('itemName')
+        item_description = request.form.get('itemDescription') 
+
+        if not all([item_name, item_description]):
+            return render_template('todo.html', error="All fields are required")
+        document = {
+            'itemName': item_name,
+            'itemDescription': item_description
+        }
+
+        result = collection.insert_one(document)
+
+        return redirect(url_for('success'))
+    
+    except Exception as e:
+        return render_template('todo.html', error=f"Error: {str(e)}")
+
 if __name__ == '__main__':
     app.run(debug=True)
