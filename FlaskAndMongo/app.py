@@ -27,6 +27,11 @@ def index():
     """Serve the index.html page"""
     return render_template('index.html')
 
+@app.route('/todo')
+def todo():
+    """Serve the To-Do page"""
+    return render_template('todo.html')
+
 @app.route('/submit', methods=['POST'])
 def submit_form():
     """Handle form submission and save to MongoDB"""
