@@ -6,17 +6,17 @@
   },
   {
     "id": 2,
-    "name": "second list item",
+    "name": "second updated list item",
     "description": "This is the second item to render from backend file as part of assignment"
   },
   {
     "id": 3,
-    "name": "third list item",
+    "name": "third updated list item",
     "description": "This is the third item to render from backend file as part of assignment"
   },
   {
     "id": 4,
     "name": "fourth list item",
-    "description": "This is the fourth item to render from backend file as part of assignment"
+    "description": "This is the fourth item updated descripttion to render from backend file as part of assignment"
   }
 ]
