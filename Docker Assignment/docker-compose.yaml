@@ -1,0 +1,30 @@
+services:
+  backend:
+    build: backend
+    hostname: backend-host
+    volumes:
+      - ./backend:/app
+      - ./frontend/public:/app/templates
+    ports:
+      - "5000:5000"
+    networks:
+      - docassignment-network
+    environment:
+      - FLASK_ENV=development
+    
+  frontend:
+    build: frontend
+    hostname: frontend
+    volumes:
+      - ./frontend:/app
+    environment:
+      - BACKEND_URL=http://backend-host:5000
+    ports:
+      - "3000:3000"
+    networks:
+      - docassignment-network
+    depends_on:
+      - backend
+
+networks:
+  docassignment-network: {}
