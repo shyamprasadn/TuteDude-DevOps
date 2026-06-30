@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: express-frontend
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: express-frontend
+
+  template:
+    metadata:
+      labels:
+        app: express-frontend
+
+    spec:
+      containers:
+      - name: express-frontend
+        image: docker.io/shyamnune/frontend-k8s:latest
+
+        ports:
+        - containerPort: 3000
