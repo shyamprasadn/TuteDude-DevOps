@@ -39,12 +39,36 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
-        const form = document.getElementById('assignmentForm');
 
-        const response = await fetch('/config');
-        const config = await response.json();
+            const form = document.getElementById('assignmentForm');
 
-        form.action = `${config.backendUrl}/submit`;
+            // Get backend URL from Express
+            const response = await fetch('/config');
+            const config = await response.json();
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch(`${config.backendUrl}/submit`, {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        window.location.href = '/success.html';
+                    } else {
+                        const errorText = await response.text();
+                        alert("Submission failed:\n" + errorText);
+                    }
+
+                } catch (err) {
+                    alert("Unable to reach backend.");
+                    console.error(err);
+                }
+            });
 
         });
     </script>

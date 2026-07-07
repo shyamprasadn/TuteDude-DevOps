@@ -51,7 +51,10 @@ def submit_form():
         # Validate form data
         if not all([firstname, lastname, username, password]):
             logger.warning("Missing required fields")
-            return redirect(f"{FRONTEND_URL}/index.html", error="All fields are required")
+            return jsonify({
+                "status": "error",
+                "message": "All fields are required"
+            }), 400
         
         # Create document
         document = {
@@ -66,12 +69,18 @@ def submit_form():
         logger.info(f"✓ Document inserted with ID: {result.inserted_id}")
         
         # Redirect to success page
-        return redirect(f"{FRONTEND_URL}/success.html")
+        return jsonify({
+            "status": "success",
+            "message": "User created successfully"
+        }), 200
     
     except Exception as e:
         logger.error(f"Error during submission: {str(e)}", exc_info=True)
-        return redirect('/index.html', error=f"Error: {str(e)}")
-
+        return jsonify({
+            "status": "error",
+            "message": f"Error: {str(e)}"
+        }), 500
+    
 # @app.route('/success')
 # def success():
 #     """Display success message"""
