@@ -5,6 +5,7 @@ import logging
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from dotenv import load_dotenv
+from flask_cors import CORS
 
 # Setup logging for debugging
 logging.basicConfig(level=logging.DEBUG)
@@ -31,6 +32,8 @@ BACKEND_TEMPLATES = os.path.join(BASE_DIR, 'templates')
 logger.info(f"Backend templates folder: {BACKEND_TEMPLATES}")
 FRONTEND_URL = os.getenv("FRONTEND_URL")
 app = Flask(__name__, static_folder=FRONTEND_PUBLIC, template_folder=BACKEND_TEMPLATES)
+
+CORS(app)
 
 # @app.route('/')
 # def index():
