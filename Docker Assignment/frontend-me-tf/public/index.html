@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuteDude Assignment Form</title>
+    <style>
+        /* Center header and form horizontally */
+        h1, form {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to TuteDude Assignment</h1>
+            <div id="error" style="display:none;color:red;"></div>
+        <form id="assignmentForm" method="POST" action="/submit">
+            <div class="form-group">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+        const form = document.getElementById('assignmentForm');
+
+        const response = await fetch('/config');
+        const config = await response.json();
+
+        form.action = `${config.backendUrl}/submit`;
+
+        });
+    </script>
+</body>
+</html>
