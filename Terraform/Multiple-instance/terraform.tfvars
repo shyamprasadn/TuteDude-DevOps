@@ -1,0 +1,5 @@
+aws_region    = "ap-south-2"
+key_name      = "tutedude-learning"
+github_repo   = "https://github.com/shyamprasadn/TuteDude-DevOps.git"
+github_branch = "main"
+ami_id        = "ami-0199ac7c9fbf9ed83"
