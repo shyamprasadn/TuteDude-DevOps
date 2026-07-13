@@ -37,13 +37,5 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('assignmentForm');
-            if (!form) return;
-            // Submit directly to the backend Flask app
-            form.action = 'http://localhost:5000/submit';
-        });
-    </script>
 </body>
 </html>
