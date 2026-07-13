@@ -31,9 +31,9 @@ BACKEND_TEMPLATES = os.path.join(BASE_DIR, 'templates')
 logger.info(f"Backend templates folder: {BACKEND_TEMPLATES}")
 app = Flask(__name__, static_folder=FRONTEND_PUBLIC, template_folder=BACKEND_TEMPLATES)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# @app.route('/')
+# def index():
+#    return render_template('/')
 
 @app.route('/submit', methods=['POST'])
 def submit_form():
@@ -50,7 +50,7 @@ def submit_form():
         # Validate form data
         if not all([firstname, lastname, username, password]):
             logger.warning("Missing required fields")
-            return render_template('index.html', error="All fields are required")
+            return redirect('/', error="All fields are required")
         
         # Create document
         document = {
@@ -65,16 +65,16 @@ def submit_form():
         logger.info(f"✓ Document inserted with ID: {result.inserted_id}")
         
         # Redirect to success page
-        return redirect(url_for('success'))
+        return redirect('/success.html');
     
     except Exception as e:
         logger.error(f"Error during submission: {str(e)}", exc_info=True)
-        return render_template('index.html', error=f"Error: {str(e)}")
+        return redirect('/', error=f"Error: {str(e)}")
 
-@app.route('/success')
-def success():
-    """Display success message"""
-    return render_template('success.html')
+# @app.route('/success')
+# def success():
+#    """Display success message"""
+#    return render_template('success.html')
 
 if __name__ == '__main__':
     logger.info(f"Starting Flask app on port 5000")
