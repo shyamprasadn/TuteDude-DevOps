@@ -46,6 +46,8 @@ def submit_form():
         password = request.form.get('password')
         
         logger.info(f"Extracted: firstname={firstname}, lastname={lastname}, username={username}")
+
+        print(f"Extracted: firstname={firstname}, lastname={lastname}, username={username}")
         
         # Validate form data
         if not all([firstname, lastname, username, password]):
