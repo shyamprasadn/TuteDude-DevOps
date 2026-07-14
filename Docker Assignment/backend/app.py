@@ -48,6 +48,7 @@ def submit_form():
         logger.info(f"Extracted: firstname={firstname}, lastname={lastname}, username={username}")
 
         print(f"Extracted: firstname={firstname}, lastname={lastname}, username={username}")
+        print("changing just to capture screenshot")
         
         # Validate form data
         if not all([firstname, lastname, username, password]):
